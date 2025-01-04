@@ -46,3 +46,6 @@ To run the Huffman Compression Algorithm, you need:
 2) Go to directory containing *Main.cpp* and run following command in terminal to compile using g++ compiler -> **g++ Main.cpp -o main**
 3) Then run this command in terminal-> **./main**
 
+![Huffman Compress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png)
+
+![Huffman Decompress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145636.png)
