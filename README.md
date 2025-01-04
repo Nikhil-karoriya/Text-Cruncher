@@ -30,7 +30,7 @@ The compression algorithm achieves a **57% compression ratio**, which means the 
 
 To run the Huffman Compression Algorithm, you need:
 
-- A C++ compiler (e.g., GCC, Clang, or Visual Studio)
+- A G++ compiler
 - Standard C++ libraries (C++11 or later)
 - ASCII Encoded .txt file
   
