@@ -1,0 +1,3 @@
+Get-Content -Path "File/Path/to/file.txt" | Out-File -FilePath "File/Path/to/processed.txt" -Encoding ASCII
+
+this command is to convert encoding of .txt file to ASCII, file.txt is original file and processed.txt file will be generated with ASCII encoding

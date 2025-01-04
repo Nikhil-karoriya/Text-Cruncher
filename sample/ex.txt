@@ -1,0 +1,4 @@
+Hello, how are you? what is your name and what are you doing here? I am fine,
+my name is huffman and i am implementing huffman compression. Ensure that the
+Huffman tree is traversed correctly, and make sure that the string s has valid
+Huffman codes that match with the leaf nodes of the tree.
