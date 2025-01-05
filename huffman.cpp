@@ -81,8 +81,8 @@ class huffman{
             }
             string temp= this->inputFile.substr(0,idx);
 
-            this->encodedFile= temp + "-enc.txt";
-            this->metaFile= temp + "-meta.txt";
+            this->encodedFile= temp + "-enc.huff";
+            this->metaFile= temp + "-meta.huff";
 
             this->arrSize= 256;
 
