@@ -76,8 +76,7 @@ class huffman{
             int idx;
             for(int i=0; i< this->inputFile.size(); i++){
                 if(this->inputFile[i] == '.'){
-                    idx= i;     
-                    break;
+                    idx= i;  
                 }
             }
             string temp= this->inputFile.substr(0,idx);
