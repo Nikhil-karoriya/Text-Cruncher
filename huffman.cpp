@@ -75,7 +75,7 @@ void huffman::setExtension(){
     ifstream reader(metaFile);
 
     if(reader.is_open() == false){
-        cout<<metaFile<<" not found for decompression! 1\n";
+        cout<<metaFile<<" not found for decompression!\n";
         return;
     }
 
@@ -88,7 +88,7 @@ void huffman::createArr(){
     ifstream reader(inputFile);
 
     if(reader.is_open() == false){
-        cout<<'\n'<< inputFile + " not found! 2\n";
+        cout<<'\n'<< inputFile + " not found!\n";
         return;
     }
 
@@ -210,7 +210,7 @@ void huffman::encoder(){
     ofstream writer(encodedFile, ios::binary);
 
     if(writer.is_open() == false){
-        cout<<'\n'<<encodedFile + " not found! 3\n";
+        cout<<'\n'<<encodedFile + " not found!\n";
         reader.close();
         return;
     }
@@ -262,7 +262,7 @@ void huffman::encoder(){
     ofstream meta(metaFile);
     
     if(meta.is_open() == false){
-        cout<<"\nmeta-file not found! 4\n";
+        cout<<"\nmeta-file not found!\n";
         return;
     }
 
@@ -285,7 +285,7 @@ void huffman::readMeta(){
     ifstream reader(metaFile);
     
     if(reader.is_open() == false){
-        cout<<'\n'<< metaFile + " not found ! 5\n";
+        cout<<'\n'<< metaFile + " not found!\n";
         return;
     }
 
@@ -342,7 +342,7 @@ void huffman::decoder(){
     ifstream reader(encodedFile, ios::binary);
 
     if(reader.is_open() == false){
-        cout<<'\n'<<encodedFile + " not found ! 6\n";
+        cout<<'\n'<<encodedFile + " not found! \n";
         return;
     }
 
@@ -352,7 +352,7 @@ void huffman::decoder(){
     ofstream writer(decodedFile);
 
     if(writer.is_open() == false){
-        cout<<"\ndecoded file not found! 7\n";
+        cout<<"\ndecoded file not found!\n";
         reader.close();
         return;
     }
@@ -395,7 +395,7 @@ void huffman::compress(){
     ifstream reader(inputFile);
 
     if(reader.is_open() == false){
-        cout<<'\n'<< inputFile + " not found for compression! 8\n";
+        cout<<'\n'<< inputFile + " not found for compression! \n";
         return;
     }
     reader.close();
