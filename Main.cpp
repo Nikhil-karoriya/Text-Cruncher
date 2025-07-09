@@ -1,6 +1,7 @@
-#include "huffman.cpp"
-#include "cli.cpp" 
+#include "huffman.h"
+#include "cli.h" 
 #include<chrono>
+#include<iostream>
 
 using namespace std;
 
@@ -53,15 +54,11 @@ int main(){
         
         ui.fillScreen();
 
-        cout<<"\n\tNote: Only ASCII Encoded file supported!\n";
-
-        cout<<endl;
+        cout<<"\n\tNote: Only ASCII Encoded file supported!\n\n";
 
         cout<<"\t1) COMPRESS FILE\n";
         cout<<"\t2) DECOMPRESS FILE\n";
-        cout<<"\t3) Exit\n";
-
-        cout<<endl;
+        cout<<"\t3) Exit\n\n";
 
         int var= 3;
 

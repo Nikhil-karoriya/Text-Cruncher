@@ -1,29 +1,12 @@
-#include <iostream>
-#include <string>
-#include <vector>
+#include "cli.h"
 
 using namespace std;
 
-class CLI{
-
-    private:
-        int width ;  
-        int height ;  
-
-        void printBorder(int,bool); 
-        void printHuffman();
-        void printPadding(int);
-
-    public:
-
-        CLI(){
-            
-            this->width= 35;
-            this->height= 9;
-        }
-        
-        void fillScreen();
-};
+CLI::CLI(){
+    
+    this->width= 35;
+    this->height= 9;
+}
 
 void CLI::fillScreen(){
 

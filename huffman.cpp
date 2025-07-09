@@ -1,133 +1,94 @@
-#include<iostream>
-#include<string>
-#include<bitset>
-#include<fstream>
-#include<vector>
-#include<queue>
+#include "huffman.h"
 
 using namespace std;
 
-class Node{
-    public:
-        char data;
-        string code;
-        int freq;
-        Node* left;
-        Node* right;
+Node::Node(){
+    freq= 0;
+    left= right= NULL;
+    code = "";
+    data= '#';
+}
 
-        Node(){
-            freq= 0;
-            left= right= NULL;
-            code = "";
-            data= '#';
-        }
+bool comp::operator()(Node* a, Node* b) {
+    if (a->freq != b->freq) 
+        return a->freq > b->freq;
+
+    return a->data > b->data;
+}
+
+huffman::huffman(string inputFile){
+    this->inputFile= inputFile;
     
-};
-
-struct comp{
-     bool operator()(Node* a, Node* b) {
-        if (a->freq != b->freq) 
-            return a->freq > b->freq;
-
-        return a->data > b->data;
+    int idx;
+    for(int i=0; i< this->inputFile.size(); i++){
+        if(this->inputFile[i] == '.'){
+            idx= i;  
+        }
     }
-};
+    string fileName= this->inputFile.substr(0,idx);
+    string extension= this->inputFile.substr(idx);
 
-class huffman{
+    this->encodedFile= fileName + "-enc.huff";
+    this->metaFile= fileName + "-meta.huff";
+    this->fileExtension= extension;
     
-    private:
-        string inputFile;
-        string encodedFile, decodedFile;
-        string metaFile;   
-        
-        unsigned int padding;
-        unsigned int arrSize; 
+    this->arrSize= 256;
 
-        // create arr
-        void createArr();
-        // create Tree
-        void constructTree();
-        // traverse Tree
-        string traverseTree(string&);
-        // generate code
-        void generateCode();
-        // bfs 
-        void bfs(Node*); 
-        // encode file
-        void encoder();
-        // decode file
-        void decoder();
-        // read meta-file
-        void readMeta();
+    for(int i=0; i<arrSize; i++){
+        Node* temp= new Node();
+        arr.push_back(temp); 
+        arr[i]->data= static_cast<char>(i);
+    }
 
-        bool checkFile(string);
+}    
 
-        void printTree(Node*);    
-        void print();
+huffman::huffman(string encodedFile, string metaFile){
+    this->encodedFile= encodedFile;
+    this->metaFile= metaFile;
 
-        priority_queue<Node*, vector<Node*>, comp > minHeap;
-        vector<Node*> arr;
-
-    public:
-
-        huffman(string inputFile){
-            this->inputFile= inputFile;
-            
-            int idx;
-            for(int i=0; i< this->inputFile.size(); i++){
-                if(this->inputFile[i] == '.'){
-                    idx= i;  
-                }
-            }
-            string temp= this->inputFile.substr(0,idx);
-
-            this->encodedFile= temp + "-enc.huff";
-            this->metaFile= temp + "-meta.huff";
-
-            this->arrSize= 256;
-
-            for(int i=0; i<arrSize; i++){
-                Node* temp= new Node();
-                arr.push_back(temp); 
-                arr[i]->data= static_cast<char>(i);
-            }
-
-        }    
-
-        huffman(string encodedFile, string metaFile){
-            this->encodedFile= encodedFile;
-            this->metaFile= metaFile;
-
-            int idx;
-            for(int i=0; i< this->encodedFile.size(); i++){
-                if(this->encodedFile[i] == '-'){
-                    idx= i;
-                }
-            }
-            string temp= this->encodedFile.substr(0,idx);
-
-            this->decodedFile= temp+ "-dec.txt";
-
-            this->arrSize= 256;
-
-            for(int i=0; i<arrSize; i++){
-                Node* temp= new Node();
-                arr.push_back(temp); 
-                arr[i]->data= static_cast<char>(i);
-            }
-
+    int idx;
+    for(int i=0; i< this->encodedFile.size(); i++){
+        if(this->encodedFile[i] == '-'){
+            idx= i;
         }
+    }
+    string fileName= this->encodedFile.substr(0,idx);
+    
+    fileExtension= "";
+    setExtension();
+    if(fileExtension.size() == 0) fileExtension= ".txt";
 
-        void compress();
-        void decompress();
-};
+    this->decodedFile= fileName + "-dec" + fileExtension;
+
+    this->arrSize= 256;
+
+    for(int i=0; i<arrSize; i++){
+        Node* temp= new Node();
+        arr.push_back(temp); 
+        arr[i]->data= static_cast<char>(i);
+    }
+
+}
+
+void huffman::setExtension(){
+    
+    ifstream reader(metaFile);
+
+    if(reader.is_open() == false){
+        cout<<metaFile<<" not found for decompression! 1\n";
+        return;
+    }
+
+    getline(reader,fileExtension);
+    reader.close();
+}
 
 void huffman::createArr(){
 
     ifstream reader(inputFile);
 
     if(reader.is_open() == false){
-        cout<<'\n'<< inputFile + " not found!\n";
+        cout<<'\n'<< inputFile + " not found! 2\n";
         return;
     }
 
@@ -249,7 +210,7 @@ void huffman::encoder(){
     ofstream writer(encodedFile, ios::binary);
 
     if(writer.is_open() == false){
-        cout<<'\n'<<encodedFile + " not found!\n";
+        cout<<'\n'<<encodedFile + " not found! 3\n";
         reader.close();
         return;
     }
@@ -301,10 +262,11 @@ void huffman::encoder(){
     ofstream meta(metaFile);
     
     if(meta.is_open() == false){
-        cout<<"\nmeta-file not found!\n";
+        cout<<"\nmeta-file not found! 4\n";
         return;
     }
 
+    meta<<fileExtension<<'\n';
     meta<<paddingBits<<'\n';
     
     for(int i=0; i<arrSize; i++){
@@ -323,7 +285,7 @@ void huffman::readMeta(){
     ifstream reader(metaFile);
     
     if(reader.is_open() == false){
-        cout<<'\n'<< metaFile + " not found !\n";
+        cout<<'\n'<< metaFile + " not found ! 5\n";
         return;
     }
 
@@ -331,7 +293,9 @@ void huffman::readMeta(){
     reader.seekg(0, ios::beg);
 
     string s;
-
+    // first getline gives fileExtension
+    getline(reader,s);      
+    // second getline gives padding bits
     getline(reader,s);
 
     int paddingBits= static_cast<int>(s[0] - '0');
@@ -378,7 +342,7 @@ void huffman::decoder(){
     ifstream reader(encodedFile, ios::binary);
 
     if(reader.is_open() == false){
-        cout<<'\n'<<encodedFile + " not found !\n";
+        cout<<'\n'<<encodedFile + " not found ! 6\n";
         return;
     }
 
@@ -388,7 +352,7 @@ void huffman::decoder(){
     ofstream writer(decodedFile);
 
     if(writer.is_open() == false){
-        cout<<"\ndecoded file not found!\n";
+        cout<<"\ndecoded file not found! 7\n";
         reader.close();
         return;
     }
@@ -431,7 +395,7 @@ void huffman::compress(){
     ifstream reader(inputFile);
 
     if(reader.is_open() == false){
-        cout<<'\n'<< inputFile + " not found for compression!\n";
+        cout<<'\n'<< inputFile + " not found for compression! 8\n";
         return;
     }
     reader.close();
@@ -470,7 +434,7 @@ bool huffman::checkFile(string fileName){
     ifstream reader(fileName);
 
     if(reader.is_open() == false){
-        cout<<'\n'<<fileName + " not found for decompression!\n";
+        cout<<'\n'<<fileName + " not found for decompression! \n";
         return false;
     }
     reader.close();
