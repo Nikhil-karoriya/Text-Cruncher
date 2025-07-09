@@ -12,6 +12,21 @@ This repository contains an implementation of the **Huffman Compression Algorith
 - **C++ Implementation**: The code is implemented in C++ and is designed to be fast and memory-efficient.
 - **Easy to Use**: Simply provide an input file, and the program will output the compressed file with its meta data file.
 
+## Supported File Types
+
+This implementation supports **all text file types**, including but not limited to:
+
+- Plain text files: `.txt`, `.log`
+- Source code files: `.cpp`, `.java`, `.js`, `.py`
+- Data files: `.csv`, `.json`, `.xml`
+- Config and markup files: `.html`, `.ini`, `.yml`, `.md`, `.conf`
+
+> 💡 **Note:** For best results, input files should be **ASCII-encoded**. If your file is UTF-8 or contains special characters, convert it using PowerShell:
+>
+> ```powershell
+> Get-Content -Path "Path/To/YourFile" | Out-File -FilePath "ConvertedFile.txt" -Encoding ASCII
+> ```
+
 ## How it Works
 
 The algorithm follows these general steps:
@@ -33,18 +48,22 @@ To run the Huffman Compression Algorithm, you need:
 - A G++ compiler
 - Standard C++ libraries (C++11 or later)
 - ASCII Encoded .txt file
-  
-**Note:** ASCII Encoded .txt files should be used for compression. If file is UTF-8 encoded, then run this command to convert it to ASCII Encoded ->  **Get-Content -Path "File/Path/to/Yourfile.txt" | Out-File -FilePath "fileASCII.txt" -Encoding ASCII** , Here *fileASCII* is ASCII encoded file and use it for compression
 
-### How to run ?
+## How to Run
 
-**Download main.exe from Releases and run it**
+### Option 1: Download Executable
 
-**OR**
+- Download `main.exe` from the [Releases](#) section and run it.
 
-1) Download all the files. 
-2) Go to directory containing *Main.cpp* and run following command in terminal to compile using g++ compiler -> **g++ Main.cpp -o main**
-3) Then run this command in terminal-> **./main**
+### Option 2: Compile and Run Manually
+
+1. Download all project files.
+2. Open a terminal in the directory containing `main.cpp`.
+3. Compile the code:
+
+   ```bash
+   g++ main.cpp huffman.cpp cli.cpp -o main
+   ./main
 
 ![Huffman Compress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png)
 
