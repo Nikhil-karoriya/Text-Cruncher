@@ -126,9 +126,3 @@ You can compress any ASCII-based text file, such as:
 - Terminal or Command Prompt
 
 - Input file (preferably ASCII-encoded)
-
-
-
-![Huffman Compress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png)
-
-![Huffman Decompress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145636.png)
