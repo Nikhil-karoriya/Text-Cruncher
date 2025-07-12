@@ -1,69 +1,133 @@
-# Huffman Compression Algorithm in C++
+# 🗜️ Huffman Compression Algorithm in C++
+This repository provides a C++ implementation of the Huffman Compression Algorithm, a popular lossless data compression technique. It reduces file size by assigning shorter binary codes to frequently occurring characters and longer codes to less frequent ones.
 
-This repository contains an implementation of the **Huffman Compression Algorithm** in C++. The algorithm is used for lossless data compression, where the size of the file is reduced by assigning variable-length codes to characters based on their frequency of occurrence. The characters that appear more frequently are assigned shorter codes, while characters that appear less frequently are assigned longer codes.
+<p align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/1920px-Huffman_tree_2.svg.png" alt="Huffman Tree" width="600"> </p>
 
-![Huffman Tree](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/1920px-Huffman_tree_2.svg.png)
+---
+## 🚀 Features
+
+- 🔒 Lossless Compression: Ensures no data loss during compression and decompression.
+
+- ⚡ Efficient C++ Implementation: Fast, lightweight, and memory-friendly.
+
+- 📉 Compression Efficiency: Up to 57% size reduction
+
+- 🧾 Metadata Storage: Stores the Huffman tree or frequency map for accurate decompression.
+
+- 🛠️ Supports All Text File Types: Compatible with .txt, .csv, .cpp, .json, etc.
+
+---
+
+## 📸 Screenshots
+
+### 🔹 Compression Interface
+
+<img src="https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png" alt="Compression Screenshot" width="600"/>
+
+---
+
+### 🔹 Decompression Interface
+
+<img src="https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145636.png" alt="Decompression Screenshot" width="600"/>
 
 
-## Features
+---
 
-- **Efficient & lossless Data Compression**: The implementation uses the Huffman coding algorithm to compress input data without any data loss.
-- **Compression Ratio**: Achieved a compression ratio of **57%**, meaning the compressed file size is reduced to 57% of the original size.
-- **C++ Implementation**: The code is implemented in C++ and is designed to be fast and memory-efficient.
-- **Easy to Use**: Simply provide an input file, and the program will output the compressed file with its meta data file.
+# 📉 Compression Statistics
+      
+      - 🥇 Best case: Up to 57% size reduction
+      
+      - 📊 Average case: Around 40–45% reduction in file size
 
-## Supported File Types
+      - 📦 Lossless: Decompressed files are identical to the original
 
-This implementation supports **all text file types**, including but not limited to:
+---
 
-- Plain text files: `.txt`, `.log`
-- Source code files: `.cpp`, `.java`, `.js`, `.py`
-- Data files: `.csv`, `.json`, `.xml`
-- Config and markup files: `.html`, `.ini`, `.yml`, `.md`, `.conf`
+## 📂 Supported File Types
+You can compress any ASCII-based text file, such as:
 
-> 💡 **Note:** For best results, input files should be **ASCII-encoded**. If your file is UTF-8 or contains special characters, convert it using PowerShell:
->
+- 📄 .txt, .log, .md
+
+- 💻 .cpp, .java, .py, .js
+
+- 📊 .csv, .json, .xml
+
+- ⚙️ .html, .ini, .yml, .conf
+
+ℹ️ Tip: Convert files to ASCII if needed using PowerShell:
+
 > ```powershell
 > Get-Content -Path "Path/To/YourFile" | Out-File -FilePath "ConvertedFile.txt" -Encoding ASCII
 > ```
 
-## How it Works
+---
 
-The algorithm follows these general steps:
+## ⚙️ How It Works
 
-1. **Calculate Frequency**: Count the frequency of each character in the input file.
-2. **Build Huffman Tree**: Construct a binary tree based on the frequency of characters. The most frequent characters will be placed closer to the root, and the less frequent ones will be deeper in the tree.
-3. **Generate Codes**: Assign a binary code to each character based on its position in the Huffman tree.
-4. **Compress the File**: Replace each character in the original file with its corresponding Huffman code, creating a compressed output file.
-5. **Decompress the File**: The program also includes functionality to decompress the file using the stored meta data file.
+1. Frequency Analysis
+      - Reads the input file and calculates the frequency of each character.
 
-## Achieved Compression Ratio
+2. Huffman Tree Construction
+      - Builds a binary tree with frequent characters closer to the root.
 
-The compression algorithm achieves a **57% compression ratio**, which means the compressed file is about 57% of the size of the original file. This is a significant reduction in file size while maintaining the integrity of the original data during decompression.
+3. Code Generation
+      - Assigns variable-length binary codes to each character.
 
-### Prerequisites
+4. Compression
+      - Replaces characters with their codes and writes the compressed output.
 
-To run the Huffman Compression Algorithm, you need:
+5. Decompression
+      - Uses stored metadata to reconstruct the original file.
 
-- A G++ compiler
-- Standard C++ libraries (C++11 or later)
-- ASCII Encoded .txt file
+---
 
-## How to Run
+## 📁 Project Structure
+```
+📁 Huffman-Compression/
+├── main.cpp
+├── huffman.cpp
+├── cli.cpp
+├── huffman.hpp
+├── cli.hpp
+├── README.md
+├── Images/
+│   ├── Screenshot_1.png
+│   └── Screenshot_2.png
 
-### Option 1: Download Executable
+```
 
-- Download `main.exe` from the [Releases](#) section and run it.
+---
 
-### Option 2: Compile and Run Manually
+## 🖥️ Usage
 
-1. Download all project files.
-2. Open a terminal in the directory containing `main.cpp`.
-3. Compile the code:
+### ✅ Option 1: Download Executable
+
+   - Go to the Releases section.
+
+   - Download main.exe.
+
+   - Run it and follow on-screen instructions.
+
+### 🔧 Option 2: Compile and Run Manually
+
+1. Clone this repository.
+
+2. Open a terminal and navigate to the folder containing main.cpp.
+
+3. Compile the project:
 
    ```bash
    g++ main.cpp huffman.cpp cli.cpp -o main
    ./main
+
+## 📋 Prerequisites
+- G++ Compiler (C++11 or later)
+
+- Terminal or Command Prompt
+
+- Input file (preferably ASCII-encoded)
+
+
 
 ![Huffman Compress](https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png)
 
