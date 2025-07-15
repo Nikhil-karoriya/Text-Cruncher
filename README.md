@@ -1,68 +1,61 @@
-# 🗜️ Huffman Compression Algorithm in C++
-This repository provides a C++ implementation of the Huffman Compression Algorithm, a popular lossless data compression technique. It reduces file size by assigning shorter binary codes to frequently occurring characters and longer codes to less frequent ones.
+# Huffman Compression Algorithm in C++
 
-<p align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/1920px-Huffman_tree_2.svg.png" alt="Huffman Tree" width="600"> </p>
+This repository contains a C++ implementation of the Huffman Compression Algorithm — a widely-used, lossless data compression technique. Huffman coding reduces file size by assigning shorter binary codes to frequently occurring characters and longer codes to less frequent ones.
 
----
-## 🚀 Features
-
-- 🔒 Lossless Compression: Ensures no data loss during compression and decompression.
-
-- ⚡ Efficient C++ Implementation: Fast, lightweight, and memory-friendly.
-
-- 📉 Compression Efficiency: Up to 57% size reduction
-
-- 🧾 Metadata Storage: Stores the Huffman tree or frequency map for accurate decompression.
-
-- 🛠️ Supports All Text File Types: Compatible with .txt, .csv, .cpp, .json, etc.
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Huffman_tree_2.svg/1920px-Huffman_tree_2.svg.png" alt="Huffman Tree" width="600">
+</p>
 
 ---
 
-## 📸 Screenshots
+## Features
 
-### 🔹 Compression Interface
+- **Lossless Compression**: Guarantees that decompressed files are identical to the original input.
+- **High Performance**: Efficient and memory-friendly C++ implementation.
+- **Compression Efficiency**: Achieves up to 57% file size reduction depending on input.
+- **Metadata Support**: Stores frequency map or tree structure for accurate decompression.
+- **Text File Compatibility**: Supports all ASCII-based formats, including `.txt`, `.cpp`, `.json`, `.csv`, etc.
+
+---
+
+## Screenshots
+
+### Compression Interface
 
 <img src="https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145550.png" alt="Compression Screenshot" width="600"/>
 
----
-
-### 🔹 Decompression Interface
+### Decompression Interface
 
 <img src="https://github.com/Nikhil-karoriya/Huffman-Compression/blob/f98968ee7c6c8b45045edd8935c3536e526bd406/Images/Screenshot%202025-01-04%20145636.png" alt="Decompression Screenshot" width="600"/>
 
+---
+
+## Compression Statistics
+
+- **Best Case:** Up to 57% size reduction  
+- **Average Case:** 40–45% reduction depending on file content  
+- **Lossless Guarantee:** Decompressed files are byte-exact replicas of the original
 
 ---
 
-# 📉 Compression Statistics
-      
-      - 🥇 Best case: Up to 57% size reduction
-      
-      - 📊 Average case: Around 40–45% reduction in file size
+## Supported File Types
 
-      - 📦 Lossless: Decompressed files are identical to the original
+This tool supports compression of any ASCII-based text file, including but not limited to:
 
----
+- `.txt`, `.log`, `.md`
+- `.cpp`, `.java`, `.py`, `.js`
+- `.csv`, `.json`, `.xml`
+- `.html`, `.ini`, `.yml`, `.conf`
 
-## 📂 Supported File Types
-You can compress any ASCII-based text file, such as:
+**Tip:** Convert files to ASCII if necessary using PowerShell:
 
-- 📄 .txt, .log, .md
-
-- 💻 .cpp, .java, .py, .js
-
-- 📊 .csv, .json, .xml
-
-- ⚙️ .html, .ini, .yml, .conf
-
-ℹ️ Tip: Convert files to ASCII if needed using PowerShell:
-
-> ```powershell
-> Get-Content -Path "Path/To/YourFile" | Out-File -FilePath "ConvertedFile.txt" -Encoding ASCII
-> ```
+```powershell
+Get-Content -Path "Path/To/YourFile" | Out-File -FilePath "ConvertedFile.txt" -Encoding ASCII
+```
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 1. Frequency Analysis
       - Reads the input file and calculates the frequency of each character.
@@ -81,9 +74,9 @@ You can compress any ASCII-based text file, such as:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
-📁 Huffman-Compression/
+Huffman-Compression/
 ├── main.cpp
 ├── huffman.cpp
 ├── cli.cpp
@@ -98,9 +91,9 @@ You can compress any ASCII-based text file, such as:
 
 ---
 
-## 🖥️ Usage
+## Usage
 
-### ✅ Option 1: Download Executable
+### Option 1: Download Executable
 
    - Go to the Releases section.
 
@@ -108,7 +101,7 @@ You can compress any ASCII-based text file, such as:
 
    - Run it and follow on-screen instructions.
 
-### 🔧 Option 2: Compile and Run Manually
+### Option 2: Compile and Run Manually
 
 1. Clone this repository.
 
@@ -120,7 +113,7 @@ You can compress any ASCII-based text file, such as:
    g++ main.cpp huffman.cpp cli.cpp -o main
    ./main
 
-## 📋 Prerequisites
+## Prerequisites
 - G++ Compiler (C++11 or later)
 
 - Terminal or Command Prompt
